@@ -7,50 +7,51 @@ import java.util.*;
 
 public class AutoComplete{
 
-    DLBNode root;
-  //TO-DO: Add instance variable: you should have at least the tree root
+  //starting point for the DLB when traversing
+  DLBNode root;
 
   public AutoComplete(String dictFile) throws java.io.IOException {
     //TO-DO Initialize the instance variables  
     Scanner fileScan = new Scanner(new FileInputStream(dictFile));
     while(fileScan.hasNextLine()){
       StringBuilder word = new StringBuilder(fileScan.nextLine());
+      //adds word from file into DLB
       add(word);
-      //TO-DO call the public add method or the private helper method if you have one
     }
     fileScan.close();
    
   }
-
-  /**
-   * Part 1: add, increment score, and get score
-   */
-
-  //add word to the tree
+  //method for a word paramter which was used in a2test.java
   public void add(StringBuilder word)
   {
+
     if (word == null) throw new IllegalArgumentException("calls put() with a null key"); 
+    //calls another add with more parameters for easier add similar to lab 5
+    //A2test.java uses the one paramater add method
     root=add(root, word ,0);
-    //TO-DO Implement this method
   }
   private DLBNode add(DLBNode node,StringBuilder key,int pos)
   {
       DLBNode result=node;
-    if (node == null){
+    //DLB is empty at rood node
+      if (node == null){
         result = new DLBNode(key.charAt(pos),0);
+        //If there is still more characters in the key go down the trie to add full word
         if(pos < key.length()-1){
           result.child = add(result.child,key,pos+1);
         } else {
           result.isWord = true;
         }
-    } else if(node.data== key.charAt(pos)) {
+        //If the node is not null and equals the data keep traveling down the trie to add full word
+      } else if(node.data== key.charAt(pos)) {
         if(pos < key.length()-1){
           result.child=add(result.child,key,pos+1);
         
         } else {
           result.isWord = true; //update
         }
-    } else {
+    //If node does not equals key than go to sibiling to check if there is an equivalent node there or append one
+      } else {
       result.sibling=add(result.sibling, key, pos); 
     }
     
@@ -60,6 +61,7 @@ public class AutoComplete{
 
   //increment the score of word
   public void notifyWordSelected(StringBuilder word){
+   //gets node pointing to the end of the word and increments it score
     DLBNode curr=getNode(root, word.toString(), 0);
     curr.score++;//
   }
@@ -67,20 +69,22 @@ public class AutoComplete{
 
   //get the score of word
   public int getScore(StringBuilder word){
+    //gets node pointing to the end of the word and returns its score
     DLBNode resultNode=getNode(root, word.toString(), 0);
     return resultNode.score;
-    //TO-DO Implement this method
   
   }
   private void collect(DLBNode x, Queue<String> queue,StringBuilder current) 
   {
+    //Used Collect method from lab 5 to get all the words starting from a node
+    //Will be used to get suggestions
+    //Uses queue structure to keep words
     if (x == null) return;
     DLBNode curr = x;
     while(curr != null){
       current.append(curr.data);
       if(curr.isWord==true){
         queue.enqueue(current.substring(0, current.length()));
-        //System.out.println(queue.toString()+"whatttt");
       }
       collect(curr.child, queue, current);
       current.deleteCharAt(current.length()-1);
@@ -97,33 +101,28 @@ public class AutoComplete{
     Queue<String> collector = new Queue<>();
     StringBuilder worder=new StringBuilder();
     DLBNode nodes = getNode(root, word.toString(), 0);
-  //System.out.println(nodes);
-  if(nodes==null)
+  //If no node is to be found
+    if(nodes==null)
   {
     return options;
   } 
+  //if the given node itself is a word enqueue in collector because collect method will miss it
   if(nodes.isWord==true)
    {
      collector.enqueue(word.toString());
    }
-   if(nodes.child==null)
-   {
-    //collect(nodes.sibling, collector,worder.append(word));
-   }   
-   else{
-    collect(nodes.child, collector,worder.append(word));
-   } 
-  
-   // printTree(root,0);
-    Iterator<String> it = collector.iterator();
+   //collect all words from the end of the word to be made into prefix suggestions
+   collect(nodes.child, collector,worder.append(word));
+   //uses an iterator to go thorugh and remove words from queue in fifo 
+   Iterator<String> it = collector.iterator();
      while(it.hasNext())
     {
-      
+    
       String o= collector.dequeue();
       StringBuilder sb= new StringBuilder();
+      //Appends word from queue to a stringbuilder so it can passed into getnode and made into suggestion class.
       sb.append(o);
       DLBNode node= getNode(root, o, 0);
-   
       if(node==null)
       {
         break;
@@ -133,12 +132,7 @@ public class AutoComplete{
       it.next();
     }
     Collections.sort(options);
-   //Collections.reverse(options);
-
-    //TO-DO Implement this method
-  
       return options;
-    
     }
 
   /**
@@ -211,6 +205,7 @@ public class AutoComplete{
     public int compareTo(AutoComplete.Suggestion o) {
       if(o.score==score)
       {
+        //the autograder expects them to be sorted alphabetically if they are equal
         int result=word.toString().compareTo(o.word.toString());
         
         return result;
