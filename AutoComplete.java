@@ -136,13 +136,9 @@ public class AutoComplete{
    Collections.reverse(options);
 
     //TO-DO Implement this method
-   if(options.size()>3)
-   {
-     return (ArrayList<AutoComplete.Suggestion>) options.subList(0, 2);
-   }
-    else{
+  
       return options;
-    }
+    
     }
 
   /**
@@ -215,7 +211,7 @@ public class AutoComplete{
     public int compareTo(AutoComplete.Suggestion o) {
       if(o.score==score)
       {
-        return -1;
+        return 0;
       }
       if(score>o.score)
       {
