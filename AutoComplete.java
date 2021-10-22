@@ -133,7 +133,7 @@ public class AutoComplete{
       it.next();
     }
     Collections.sort(options);
-   Collections.reverse(options);
+   //Collections.reverse(options);
 
     //TO-DO Implement this method
   
