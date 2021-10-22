@@ -115,12 +115,6 @@ public class AutoComplete{
    } 
   
    // printTree(root,0);
-    
-    
-    
-    
-    
-    
     Iterator<String> it = collector.iterator();
      while(it.hasNext())
     {
@@ -142,8 +136,14 @@ public class AutoComplete{
    Collections.reverse(options);
 
     //TO-DO Implement this method
-    return options;
-  }
+   if(options.size()>3)
+   {
+     return (ArrayList<AutoComplete.Suggestion>) options.subList(0, 2);
+   }
+    else{
+      return options;
+    }
+    }
 
   /**
    * Helper methods for debugging.
