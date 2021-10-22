@@ -211,17 +211,17 @@ public class AutoComplete{
     public int compareTo(AutoComplete.Suggestion o) {
       if(o.score==score)
       {
-        int result=o.toString().compareTo(word.toString());
+        int result=word.toString().compareTo(o.word.toString());
         
         return result;
       }
       if(score>o.score)
       {
-        return 1;
+        return -1;
       }
       if(score<o.score)
       {
-        return -1;
+        return 1;
       }
       // TODO Auto-generated method stub
       return 0;
