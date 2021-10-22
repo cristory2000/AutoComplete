@@ -196,7 +196,7 @@ public class AutoComplete{
       //TO-DO Fill in the fields and methods for this class. Make sure to have them public as they will be accessed from the test program A2Test.java.
       public Suggestion()
       {
-      
+        
       }
       public Suggestion(StringBuilder word)
       {
@@ -211,7 +211,9 @@ public class AutoComplete{
     public int compareTo(AutoComplete.Suggestion o) {
       if(o.score==score)
       {
-        return 0;
+        int result=o.toString().compareTo(word.toString());
+        
+        return result;
       }
       if(score>o.score)
       {
