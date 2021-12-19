@@ -2,7 +2,6 @@
 
 Due: Monday October 25th @ 11:59pm on Gradescope
 
-Late submission deadline: Wednesday October 27th @11:59pm with 10% penalty per late day
 
 ## Overview
 
@@ -237,24 +236,3 @@ You must submit your Github repository to GradeScope. We will only grade the fol
 2)	Any other helper files that you had to add to support your implementation
 3)	`a2.md`: A well written/formatted paper (see the Writeup section above for details on the paper)
 4)	Assignment Information Sheet (including compilation and execution information).
-
-_The idea from your submission is that your TA (and/or the autograder if available) can compile and run your programs from the command line WITHOUT ANY additional files or changes, so be sure to test it thoroughly before submitting it. If the TA (and/or the autograder if available) cannot compile or run your submitted code it will be graded as if the program does not work.
-If you cannot get the programs working as given, clearly indicate any changes you made and clearly indicate why on your Assignment Information Sheet.  You will lose some credit for not getting it to work properly but getting the main programs to work with modifications is better than not getting them to work at all.  A template for the Assignment Information Sheet can be found in this repository. You do not have to use this template, but your sheet should contain the same information.
-
-_Note: If you use an IDE, such as NetBeans, Eclipse, or IntelliJ, to develop your programs, make sure the programs will compile and run on the command-line before submitting – this may require some modifications to your program (e.g., removing package information).
-
-## Rubrics
-
-__*Please note that if an autograder is available, its score will be used as a guidance for the TA, not as an official final score*__.
-
-Item|Points
-----|------
-DLB Insertion |	15
-Score incrementing|	15
-Score retrieval|	10
-Suggestion class|	5
-Word suggestions retrieval|	20
-Efficiency|10
-Write-up paper|	10
-Code style and documentation|	10
-Assignment Information Sheet|	5
