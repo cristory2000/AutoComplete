@@ -225,11 +225,3 @@ n (0)
     * Number of characters in a word and/or prefix
     * The alphabet size
     * Number of matching word suggestions
-
-## Submission Requirements
-
-You must submit your Github repository to GradeScope. We will only grade the following files:
-1)	AutoComplete.java
-2)	Any other helper files that you had to add to support your implementation
-3)	`a2.md`: A well written/formatted paper (see the Writeup section above for details on the paper)
-4)	Assignment Information Sheet (including compilation and execution information).
