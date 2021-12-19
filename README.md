@@ -1,8 +1,5 @@
 # CS 1501 – Algorithm Implementation – Assignment #2
 
-Due: Monday October 25th @ 11:59pm on Gradescope
-
-
 ## Overview
 
 * __Purpose__:  To implement a simple automatic word-completion system.
@@ -218,7 +215,7 @@ n (0)
 ```
 
 ## Writeup
-Once you have completed your assignment, write a short paper (500-750 words) using [Github Markdown syntax](https://guides.github.com/features/mastering-markdown/) and named `a2.md` that summarizes your project in the following ways:
+ `a2.md` summarizes your project in the following ways:
 1.	Discuss how you solved the autocomplete problem in some detail. Include
     * how you set up the data structures necessary for the problem and
     * how your algorithms for both tasks proceeded.  
